@@ -16,6 +16,16 @@
 
 - **Principais processos mapeados:** *ex.: cadastro de clientes/beneficiários/fiéis, controle de estoque ou doações, vendas ou arrecadação, emissão de pedidos ou solicitações, entregas ou distribuição, organização de eventos/rituais/mutirões.*
 
+Cadastro de produtos: processo responsável pelo registro das informações dos produtos comercializados pela distribuidora, incluindo nome, categoria, preço e quantidade disponível.
+
+Controle de estoque: processo utilizado para acompanhar as entradas e saídas de produtos, permitindo identificar a quantidade disponível e a necessidade de reposição.
+
+Compra de mercadorias: processo iniciado quando é identificada a necessidade de reposição de produtos.
+
+Realização de vendas: processo iniciado pela solicitação de produtos pelo cliente. O funcionário verifica a disponibilidade, registra os produtos, calcula o valor da compra, registra o pagamento e finaliza a venda.
+
+Atualização do estoque: após a realização de uma venda ou recebimento de mercadorias, as quantidades disponíveis são atualizadas de acordo com a movimentação realizada.
+
 ---
 
 ## 3. Requisitos do Sistema
@@ -23,9 +33,18 @@
 
 ### 3.1 Requisitos Funcionais
 *O que o sistema precisa FAZER (ex.: "o sistema deve permitir registrar uma venda").*
+1- O sistema deve permitir o cadastro de produtos
+2- O sistema deve permitir a alterar as informações cadastradas de um produto
+3- O sistema deve permitir consultar os produtos cadastrados e suas informações
+4- O sistema deve permitir registrar entradas e saídas de produtos no estoque
+5- O sistema deve permitir registrar compras realizadas para o estoque
+6- O sistema deve permitir o registro de vendas realizadas para o cliente
+7- O sistema deve permitir consultar as vendas realizadas
+
 
 ### 3.2 Requisitos Não Funcionais
 *Características de qualidade (ex.: desempenho, segurança, usabilidade, disponibilidade).*
+Usabilidade, desempenho, disponibilidade, integridade e segurança
 
 ---
 
