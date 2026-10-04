@@ -64,6 +64,44 @@ Para cada entidade identificada, liste:
 | Atributo | Descrição | Regra de negócio associada |
 |----------|-----------|------------------------------|
 | *nome do atributo* | *o que ele representa* | *se houver alguma regra (obrigatoriedade, valores possíveis, etc.)* |
+| Atributo | Descrição | Regra de negócio associada |
+
+Entidade: Produto
+| Atributo     |           Descrição            | Regra de negócio associada |
+| ID_PRODUTO   | Identificador único do produto |Deve ser único e obrigatório|
+| NM_PRODUTO   |         Nome do produto        | Regra de negócio associada |
+| DESC_PRODUTO |       Descrição do produto     | Regra de negócio associada |
+| PRECO        |     Preço de venda do produto  | Regra de negócio associada |
+
+Entidade: Estoque
+| Atributo       |                Descrição                        | Regra de negócio associada |
+| ID_ESTOQUE     | Identificador único do registro de estoque      |Deve ser único e obrigatório|
+| QNT_ESTOQUE    |  Quantidade disponível do produto em estoque    | Regra de negócio associada |
+| DT_ATUALIZACAO |     Data da última atualização do estoque       | Regra de negócio associada |
+
+Entidade: Fornecedor
+| Atributo      |           Descrição                 | Regra de negócio associada |
+| ID_FORNECEDOR |  Identificador único do fornecedor  |Deve ser único e obrigatório|
+| NM_FORNECEDOR |  Nome ou razão social do fornecedor | Regra de negócio associada |
+| TELEFONE      |  Telefone de contato do fornecedor  | Regra de negócio associada |
+| EMAIL         |   E-mail de contato do fornecedor   | Regra de negócio associada |
+
+Entidade: Venda
+| Atributo     |           Descrição            | Regra de negócio associada |
+| ID_VENDA     | Identificador único da venda   |Deve ser único e obrigatório|
+| DT_VENDA     |  Quanto a venda foi realizada  | Regra de negócio associada |
+| VALOR_TOTAL  |     Valor total da venda       | Regra de negócio associada |
+| PAGAMENTO    |  Forma de pagamento utilizada  | Regra de negócio associada |
+
+Entidade: Compra
+| Atributo      |           Descrição                   | Regra de negócio associada |
+| ID_COMPRA     |    Identificador único da compra      |Deve ser único e obrigatório|
+| DT_COMPRA     |  Data em que a compra foi realizada   | Regra de negócio associada |
+| VALOR_COMPRA  |       Valor total da compra           | Regra de negócio associada |
+| QUANTIDADE    |  Quantidade de produtos adquiridos    | Regra de negócio associada |
+
+
+
 
 *Mantenha o dicionário organizado e padronizado (mesmo formato de tabela para todas as entidades).*
 
