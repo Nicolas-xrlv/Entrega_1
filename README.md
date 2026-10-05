@@ -84,195 +84,186 @@ A organização não possui atualmente um banco de dados estruturado: essa condi
 ---
 
 ## 5. Dicionário de Dados Conceitual (Preliminar)
-*(vale 10% — Dimensão Procedimental - Segue o modelo do arquivo 02-03g_Exemplo_Dicionario_Dados.pdf)*
 
-Para cada entidade identificada, liste:
-
-| Atributo | Descrição | Regra de negócio associada |
-|----------|-----------|------------------------------|
-| *nome do atributo* | *o que ele representa* | *se houver alguma regra (obrigatoriedade, valores possíveis, etc.)* |
-| Atributo | Descrição | Regra de negócio associada |
+Entidade: Cliente
+| Atributo   | Descrição                                             | Regra de negócio associada                                                  |
+| ---------- | ----------------------------------------------------- | --------------------------------------------------------------------------- |
+| ID_CLIENTE | Identificador único do cliente                        | Deve ser único e obrigatório                                                |
+| NOME       | Nome ou razão social do cliente                       | Deve ser informado no cadastro                                              |
+| CPF_CNPJ   | Documento de identificação do cliente                 | Deve ser informado de acordo com o tipo de cliente e não deve ser duplicado |
+| TIPO       | Indica se o cliente é pessoa física ou jurídica       | Deve assumir valores previamente definidos, como PF ou PJ                   |
+| TELEFONE   | Número de telefone para contato com o cliente         | Deve ser armazenado em formato adequado para contato                        |
+| EMAIL      | Endereço de e-mail do cliente                         | Quando informado, deve possuir formato válido                               |
+| ENDERECO   | Endereço cadastrado do cliente                        | Deve ser informado quando necessário para as operações da distribuidora     |
+| STATUS     | Indica se o cadastro do cliente está ativo ou inativo | Deve permitir identificar clientes ativos e inativos                        |
 
 Entidade: Produto
-| Atributo     |           Descrição            | Regra de negócio associada |
-|--------------|--------------------------------|----------------------------|
-| ID_PRODUTO   | Identificador único do produto |Deve ser único e obrigatório|
-| NM_PRODUTO   |         Nome do produto        | Regra de negócio associada |
-| DESC_PRODUTO |       Descrição do produto     | Regra de negócio associada |
-| PRECO        |     Preço de venda do produto  | Regra de negócio associada |
+| Atributo     | Descrição                                                | Regra de negócio associada                                                          |
+| ------------ | -------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| ID_PRODUTO   | Identificador único do produto                           | Deve ser único e obrigatório                                                        |
+| NOME_PRODUTO | Nome comercial do produto                                | Deve ser informado e permitir identificar o produto de forma clara                  |
+| DESCRICAO    | Informações complementares sobre o produto               | Pode conter características como marca, tipo ou outras informações relevantes       |
+| ID_CATEGORIA | Identificador da categoria à qual o produto pertence     | Deve referenciar uma categoria existente                                            |
+| PRECO_VENDA  | Preço de venda do produto ao cliente                     | Não pode ser negativo e deve representar o preço praticado pela distribuidora/adega |
+| ATIVO        | Indica se o produto está disponível para comercialização | Deve permitir identificar produtos ativos e inativos                                |
 
-Entidade: Estoque
-| Atributo       |                Descrição                        | Regra de negócio associada |
-|----------------|-------------------------------------------------|----------------------------|
-| ID_ESTOQUE     | Identificador único do registro de estoque      |Deve ser único e obrigatório|
-| QNT_ESTOQUE    |  Quantidade disponível do produto em estoque    | Regra de negócio associada |
-| DT_ATUALIZACAO |     Data da última atualização do estoque       | Regra de negócio associada |
+
+Entidade: Categoria
+| Atributo       | Descrição                                   | Regra de negócio associada                                                      |
+| -------------- | ------------------------------------------- | ------------------------------------------------------------------------------- |
+| ID_CATEGORIA   | Identificador único da categoria            | Deve ser único e obrigatório                                                    |
+| NOME_CATEGORIA | Nome da categoria de produtos               | Deve ser informado e não deve gerar categorias duplicadas com o mesmo propósito |
+| DESCRICAO      | Descrição da categoria                      | Pode apresentar informações sobre os produtos que pertencem à categoria         |
+| STATUS         | Indica se a categoria está ativa ou inativa | Categorias inativas não devem ser utilizadas para novos cadastros de produtos   |
+
 
 Entidade: Fornecedor
-| Atributo      |           Descrição                 | Regra de negócio associada |
-|---------------|-------------------------------------|----------------------------|
-| ID_FORNECEDOR |  Identificador único do fornecedor  |Deve ser único e obrigatório|
-| NM_FORNECEDOR |  Nome ou razão social do fornecedor | Regra de negócio associada |
-| TELEFONE      |  Telefone de contato do fornecedor  | Regra de negócio associada |
-| EMAIL         |   E-mail de contato do fornecedor   | Regra de negócio associada |
+| Atributo        | Descrição                                          | Regra de negócio associada                                                                     |
+| --------------- | -------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| ID_FORNECEDOR   | Identificador único do fornecedor                  | Deve ser único e obrigatório                                                                   |
+| NOME_FORNECEDOR | Nome ou razão social do fornecedor                 | Deve ser informado no cadastro                                                                 |
+| CNPJ            | Cadastro Nacional da Pessoa Jurídica do fornecedor | Deve identificar o fornecedor de forma única e ser informado para fornecedores pessoa jurídica |
+| TELEFONE        | Número de telefone para contato com o fornecedor   | Deve ser armazenado em formato adequado para contato                                           |
+| EMAIL           | Endereço de e-mail do fornecedor                   | Quando informado, deve possuir formato válido                                                  |
+| ENDERECO        | Endereço do fornecedor                             | Deve ser registrado para fins cadastrais e operacionais                                        |
+| STATUS          | Indica se o fornecedor está ativo ou inativo       | Fornecedores inativos não devem ser utilizados em novas compras                                |
+
+
+Entidade: Funcionário
+| Atributo       | Descrição                                     | Regra de negócio associada                                    |
+| -------------- | --------------------------------------------- | ------------------------------------------------------------- |
+| ID_FUNCIONARIO | Identificador único do funcionário            | Deve ser único e obrigatório                                  |
+| NOME           | Nome do funcionário                           | Deve ser informado no cadastro                                |
+| CPF            | Cadastro de Pessoa Física do funcionário      | Deve identificar o funcionário de forma única                 |
+| CARGO          | Cargo ou função exercida pelo funcionário     | Deve representar a função desempenhada na distribuidora/adega |
+| DATA_ADMISSAO  | Data de admissão do funcionário               | Deve representar uma data válida de contratação               |
+| TELEFONE       | Número de telefone do funcionário             | Deve ser armazenado em formato adequado para contato          |
+| STATUS         | Indica se o funcionário está ativo ou inativo | Funcionários inativos não devem registrar novas vendas        |
 
 Entidade: Venda
-| Atributo     |           Descrição            | Regra de negócio associada |
-|--------------|--------------------------------|----------------------------|
-| ID_VENDA     | Identificador único da venda   |Deve ser único e obrigatório|
-| DT_VENDA     |  Quanto a venda foi realizada  | Regra de negócio associada |
-| VALOR_TOTAL  |     Valor total da venda       | Regra de negócio associada |
-| PAGAMENTO    |  Forma de pagamento utilizada  | Regra de negócio associada |
+| Atributo        | Descrição                                                       | Regra de negócio associada                                                      |
+| --------------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| ID_VENDA        | Identificador único da venda                                    | Deve ser único e obrigatório                                                    |
+| ID_CLIENTE      | Identificador do cliente relacionado à venda                    | Deve referenciar um cliente existente                                           |
+| ID_FUNCIONARIO  | Identificador do funcionário responsável pelo registro da venda | Deve referenciar um funcionário existente e ativo                               |
+| DATA_VENDA      | Data em que a venda foi realizada                               | Deve representar uma data válida da operação                                    |
+| FORMA_PAGAMENTO | Forma de pagamento utilizada na venda                           | Deve utilizar formas de pagamento aceitas pela distribuidora/adega              |
+| VALOR_TOTAL     | Valor total da venda                                            | Deve corresponder à soma dos valores dos itens da venda e não pode ser negativo |
+
+Entidade: Item_Venda
+| Atributo       | Descrição                                                          | Regra de negócio associada                                                        |
+| -------------- | ------------------------------------------------------------------ | --------------------------------------------------------------------------------- |
+| ID_ITEM_VENDA  | Identificador único do item da venda                               | Deve ser único e obrigatório                                                      |
+| ID_VENDA       | Identificador da venda à qual o item pertence                      | Deve referenciar uma venda existente                                              |
+| ID_PRODUTO     | Identificador do produto vendido                                   | Deve referenciar um produto existente e ativo                                     |
+| QUANTIDADE     | Quantidade do produto incluída na venda                            | Deve ser maior que zero e não pode ultrapassar a quantidade disponível no estoque |
+| PRECO_UNITARIO | Preço unitário do produto no momento da venda                      | Não pode ser negativo e deve representar o preço aplicado na operação             |
+| SUBTOTAL       | Valor correspondente à quantidade multiplicada pelo preço unitário | Deve ser calculado de acordo com a quantidade e o preço unitário do item          |
 
 Entidade: Compra
-| Atributo      |           Descrição                   | Regra de negócio associada |
-|---------------|---------------------------------------|----------------------------|
-| ID_COMPRA     |    Identificador único da compra      |Deve ser único e obrigatório|
-| DT_COMPRA     |  Data em que a compra foi realizada   | Regra de negócio associada |
-| VALOR_COMPRA  |       Valor total da compra           | Regra de negócio associada |
-| QUANTIDADE    |  Quantidade de produtos adquiridos    | Regra de negócio associada |
+| Atributo        | Descrição                                           | Regra de negócio associada                                                       |
+| --------------- | --------------------------------------------------- | -------------------------------------------------------------------------------- |
+| ID_COMPRA       | Identificador único da compra                       | Deve ser único e obrigatório                                                     |
+| ID_FORNECEDOR   | Identificador do fornecedor relacionado à compra    | Deve referenciar um fornecedor existente e ativo                                 |
+| DATA_COMPRA     | Data em que a compra foi realizada                  | Deve representar uma data válida da operação                                     |
+| VALOR_TOTAL     | Valor total da compra realizada junto ao fornecedor | Deve corresponder à soma dos valores dos itens da compra e não pode ser negativo |
+| FORMA_PAGAMENTO | Forma de pagamento utilizada na compra              | Deve representar uma forma de pagamento aceita pela empresa                      |
+
+Entidade: Item_Compra
+| Atributo       | Descrição                                                          | Regra de negócio associada                                               |
+| -------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| ID_ITEM_COMPRA | Identificador único do item da compra                              | Deve ser único e obrigatório                                             |
+| ID_COMPRA      | Identificador da compra à qual o item pertence                     | Deve referenciar uma compra existente                                    |
+| ID_PRODUTO     | Identificador do produto adquirido                                 | Deve referenciar um produto existente                                    |
+| QUANTIDADE     | Quantidade do produto adquirida na compra                          | Deve ser maior que zero                                                  |
+| PRECO_UNITARIO | Preço unitário pago pelo produto na compra                         | Não pode ser negativo                                                    |
+| SUBTOTAL       | Valor correspondente à quantidade multiplicada pelo preço unitário | Deve ser calculado de acordo com a quantidade e o preço unitário do item |
+
+Entidade: Estoque
+| Atributo         | Descrição                                             | Regra de negócio associada                                                                     |
+| ---------------- | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| ID_ESTOQUE       | Identificador único do registro de estoque            | Deve ser único e obrigatório                                                                   |
+| ID_PRODUTO       | Identificador do produto associado ao estoque         | Deve referenciar um produto existente e cada produto deve possuir um único registro de estoque |
+| QUANTIDADE_ATUAL | Quantidade disponível do produto em estoque           | Não pode ser negativa e deve ser atualizada após compras e vendas                              |
+| LOCALIZACAO      | Local onde o produto está armazenado                  | Deve identificar a localização utilizada para controle do estoque                              |
+| DATA_ATUALIZACAO | Data da última atualização das informações do estoque | Deve ser atualizada sempre que houver alteração na quantidade ou nas informações de estoque    |
+
+
+## 6. Modelagem Conceitual (Entidades, Atributos e Relacionamentos)
+
+### Entidades reconhecidas e justificativas
+
+| Entidade        | Justificativa                                                                                                                 |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| **Cliente**     | Representa as pessoas físicas ou jurídicas que realizam compras na distribuidora.                                             |
+| **Produto**     | Representa as bebidas e os demais produtos comercializados pela distribuidora.                                                |
+| **Categoria**   | Organiza os produtos em grupos, facilitando sua classificação e consulta.                                                     |
+| **Fornecedor**  | Representa as empresas responsáveis pelo fornecimento dos produtos.                                                           |
+| **Funcionário** | Representa os funcionários responsáveis pelas atividades da distribuidora, incluindo o registro das vendas.                   |
+| **Venda**       | Registra as vendas realizadas pela distribuidora, identificando o cliente, o funcionário responsável e os valores envolvidos. |
+| **Item_Venda**  | Registra os produtos e as respectivas quantidades e preços que compõem cada venda.                                            |
+| **Compra**      | Registra as compras realizadas junto aos fornecedores.                                                                        |
+| **Item_Compra** | Registra os produtos, as quantidades e os preços que compõem cada compra.                                                     |
+| **Estoque**     | Controla a quantidade disponível de cada produto na distribuidora, permitindo acompanhar sua movimentação.                    |
+
+### Atributos e classificações
+
+Os atributos representam as informações armazenadas em cada entidade. Os identificadores são utilizados como chaves primárias (PK), enquanto os campos que estabelecem vínculos entre entidades são chaves estrangeiras (FK).
+
+* **Cliente:** id_cliente (PK), nome, cpf_cnpj, tipo, telefone, email, endereco, status.
+* **Produto:** id_produto (PK), nome_produto, descricao, id_categoria (FK), preco_venda, ativo.
+* **Categoria:** id_categoria (PK), nome_categoria, descricao, status.
+* **Fornecedor:** id_fornecedor (PK), nome_fornecedor, cnpj, telefone, email, endereco, status.
+* **Funcionário:** id_funcionario (PK), nome, cpf, cargo, data_admissao, telefone, status.
+* **Venda:** id_venda (PK), id_cliente (FK), id_funcionario (FK), data_venda, forma_pagamento, valor_total.
+* **Item_Venda:** id_item_venda (PK), id_venda (FK), id_produto (FK), quantidade, preco_unitario, subtotal.
+* **Compra:** id_compra (PK), id_fornecedor (FK), data_compra, valor_total, forma_pagamento.
+* **Item_Compra:** id_item_compra (PK), id_compra (FK), id_produto (FK), quantidade, preco_unitario, subtotal.
+* **Estoque:** id_estoque (PK), id_produto (FK), quantidade_atual, localizacao, data_atualizacao.
+
+### Relacionamentos e cardinalidades
+
+Os relacionamentos representam as associações entre as entidades do sistema. As cardinalidades indicam quantas ocorrências de uma entidade podem estar associadas a uma ocorrência da outra.
+
+| Relacionamento            | Cardinalidade | Descrição                                                                                                            |
+| ------------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------- |
+| **Categoria — Produto**   | 1:N           | Uma categoria pode possuir vários produtos, enquanto cada produto pertence a uma única categoria.                    |
+| **Produto — Estoque**     | 1:1           | Cada produto possui um registro de estoque, e cada registro de estoque está associado a um único produto.            |
+| **Cliente — Venda**       | 1:N           | Um cliente pode realizar várias vendas ao longo do tempo, enquanto cada venda está vinculada a um único cliente.     |
+| **Funcionário — Venda**   | 1:N           | Um funcionário pode registrar várias vendas, enquanto cada venda é registrada por um único funcionário.              |
+| **Venda — Item_Venda**    | 1:N           | Uma venda deve possuir um ou mais itens, enquanto cada item de venda pertence a uma única venda.                     |
+| **Produto — Item_Venda**  | 1:N           | Um produto pode aparecer em vários itens de venda, enquanto cada item de venda se refere a um único produto.         |
+| **Fornecedor — Compra**   | 1:N           | Um fornecedor pode estar relacionado a várias compras, enquanto cada compra é realizada junto a um único fornecedor. |
+| **Compra — Item_Compra**  | 1:N           | Uma compra deve possuir um ou mais itens, enquanto cada item de compra pertence a uma única compra.                  |
+| **Produto — Item_Compra** | 1:N           | Um produto pode aparecer em vários itens de compra, enquanto cada item de compra se refere a um único produto.       |
+
+Os relacionamentos entre **Venda e Produto** e entre **Compra e Produto** são representados pelas entidades associativas **Item_Venda** e **Item_Compra**, respectivamente. Dessa forma, uma venda ou compra pode conter vários produtos, e um mesmo produto pode participar de várias vendas e compras.
+
+O vínculo entre **Fornecedor e Produto** também pode ser identificado por meio dos registros de compra e seus itens. Assim, não é necessário criar um relacionamento direto adicional entre essas entidades no DER apresentado.
+
+### Restrições e políticas organizacionais
+
+* Cada entidade possui um identificador único, utilizado como chave primária.
+* As chaves estrangeiras devem referenciar registros existentes nas entidades relacionadas.
+* Uma venda deve possuir pelo menos um item, e uma compra também deve possuir pelo menos um item.
+* A quantidade de produtos vendidos ou comprados deve ser maior que zero.
+* Preços e valores monetários não podem ser negativos.
+* O registro de uma venda deve reduzir a quantidade disponível dos produtos correspondentes no estoque.
+* O registro de uma compra deve aumentar a quantidade disponível dos produtos correspondentes no estoque.
+* Todo produto deve estar vinculado a uma categoria.
+* Cada produto deve possuir um registro de estoque, conforme o relacionamento 1:1 definido no modelo.
+* Os itens de venda e de compra devem estar vinculados a um produto existente.
+* Os valores de subtotal e total devem corresponder às quantidades e aos preços registrados nos respectivos itens.
+* Clientes, fornecedores, funcionários, produtos e categorias podem possuir um status para indicar se estão ativos ou inativos.
+* Dados pessoais e cadastrais devem ser armazenados somente quando necessários para as operações da distribuidora.
+* Os exemplos utilizados no projeto devem ser fictícios e não devem representar dados reais de clientes, funcionários ou fornecedores.
 
-
-
-
-*Mantenha o dicionário organizado e padronizado (mesmo formato de tabela para todas as entidades).*
-
-**Atenção à privacidade:** se forem usados exemplos de valores para ilustrar os atributos, esses exemplos devem ser **fictícios** — não utilize dados reais de clientes, fiéis, beneficiários, doadores ou funcionários da organização (nomes, CPFs, contatos etc.), mesmo que tenham sido observados durante a pesquisa de campo. Os exemplos devem apenas ser **coerentes com as operações reais** observadas.
-
----
-
-
-## 6. Modelagem Conceitual (Entidades, Atributos, Relacionamentos)
-
-
-- Entidades reconhecidas e justificativas
-
-
-EntidadeㅤㅤㅤㅤㅤㅤㅤㅤㅤJustificativa
-
-ClienteㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤRepresenta as pessoas ou empresas que realizam compras na distribuidora.
-
-ProdutoㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤRepresenta as bebidas e demais produtos comercializados pela distribuidora.
-
-FornecedorㅤㅤㅤㅤㅤㅤㅤㅤRepresenta as empresas responsáveis pelo fornecimento dos produtos.
-
-Funcionárioㅤㅤ­ㅤㅤㅤㅤ­­­­­­­­­Representa os funcionários responsáveis pelas atividades da distribuidora, incluindo o registro de vendas.
-
-VendaㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤRegistra as vendas realizadas pela distribuidora.
-
-CompraㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤRegistra as compras realizadas junto aos fornecedores.
-
-EstoqueㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤControla a quantidade disponível de cada produto na distribuidora.
-
-
-
-
-- Atributos e classificações
-
-
-
-Cliente:ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤid_cliente, nome, cpf_cnpj, tipo, telefone, email, endereco, status.
-
-Produto:ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤid_produto, nome_produto, descricao, id_categoria, preco_venda, ativo.
-
-Categoria:ㅤㅤㅤㅤㅤㅤㅤㅤㅤid_categoria, nome_categoria, descricao, status.
-
-Fornecedor:ㅤㅤㅤㅤㅤㅤㅤㅤid_fornecedor, nome_fornecedor, cnpj, telefone, email, endereco, status.
-
-Funcionário:ㅤㅤㅤㅤㅤㅤㅤㅤid_funcionario, nome, cpf, cargo, data_admissao, telefone, status.
-
-Venda:ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤid_venda, id_cliente, id_funcionario, data_venda, forma_pagamento, valor_total.
-
-Item_Venda:ㅤㅤㅤㅤㅤㅤㅤㅤid_item_venda, id_venda, id_produto, quantidade, preco_unitario, subtotal.
-
-Compra:ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤid_compra, id_fornecedor, data_compra, valor_total, forma_pagamento.
-
-Item_Compra:ㅤㅤㅤㅤㅤㅤㅤㅤid_item_compra, id_compra, id_produto, quantidade, preco_unitario, subtotal.
-
-Estoque:ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤid_estoque, id_produto, quantidade_atual, localizacao, data_atualizacao.
-
-
-
-
-
-- Relacionamentos pertinentes
-
-RelacionamentoㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤCardinalidade	ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤDescrição
-
-
-Categoria — Produtoㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ1ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤUma categoria pode possuir vários produtos, enquanto cada produto pertence a uma categoria.
-
-
-Cliente — Vendaㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ1ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤUm cliente pode realizar várias vendas, enquanto cada venda pertence a um cliente.
-
-
-Funcionário — Vendaㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ1ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤUm funcionário pode registrar várias vendas, enquanto cada venda é registrada por um funcionário.
-
-
-Venda — Item_Vendaㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ1ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤUma venda pode possuir vários itens, enquanto cada item pertence a uma venda.
-
-
-Produto — Item_Vendaㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ1ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤUm produto pode aparecer em vários itens de venda.
-
-
-Fornecedor — Compraㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ1ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤUm fornecedor pode estar relacionado a várias compras.
-
-
-Compra — Item_Compraㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ1ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤUma compra pode possuir vários itens.
-
-
-Produto — Item_Compraㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ1ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤUm produto pode aparecer em várias compras.
-
-
-Produto — Estoqueㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ1:1ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤCada produto possui um registro de estoque para controlar sua quantidade disponível.
-
-
-Fornecedor — ProdutoㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤNㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤUm fornecedor pode fornecer vários produtos e um produto pode ser fornecido por diferentes fornecedores.
-
-
-
-
- - Restrições e políticas organizacionais
-
- • Cada entidade possui um identificador único. 
-  
- • Os identificadores das entidades são utilizados como chaves primárias. 
-  
- • As chaves estrangeiras devem referenciar registros existentes.
-  
- • Uma venda deve possuir pelo menos um item. Uma compra deve possuir pelo menos um item.
-  
- • A quantidade dos produtos vendidos ou comprados deve ser maior que zero.
-  
- • Preços e valores monetários não podem ser negativos.
-  
- • Uma venda deve reduzir a quantidade disponível do produto no estoque.
-  
- • Uma compra deve aumentar a quantidade disponível do produto no estoque.
-  
- • Um produto deve estar vinculado a uma categoria.
-  
- • Um produto pode ser fornecido por um ou mais fornecedores.
-  
- • Clientes, fornecedores, funcionários, produtos e categorias podem possuir status para indicar se estão ativos ou inativos.
-  
- • Dados pessoais e cadastrais devem ser armazenados somente quando necessários para as operações da distribuidora.
-  
- • Os exemplos utilizados no projeto devem ser fictícios e não devem representar dados reais de clientes, funcionários ou fornecedores.
   
 
 ## 7. Diagrama Entidade-Relacionamento (DER)
-*(vale 20% — é o item de maior peso da entrega)*
 
-- Anexe o DER (em imagem).
-- O diagrama deve representar corretamente:
-  - Entidades
-  - Atributos
-  - Relacionamentos
-  - **Cardinalidades**
-- O modelo deve ser **consistente** e já demonstrar potencial de **escalabilidade e integração** (pensando nas próximas etapas do projeto).
+<img width="1835" height="1634" alt="Untitled" src="https://github.com/user-attachments/assets/2c0cbd8c-ed4a-4a46-917c-48c58a8705b0" />
 
----
 
 ## 8. Justificativa Técnica
 
