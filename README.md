@@ -3,24 +3,21 @@
 
 ## 1. Caracterização da Organização
 
-- Contexto e porte
-A Adega LB é uma organização com fins lucrativos que possui três estabelecimentos. Atualmente, a organização conta com 9 funcionários e 1 patrão, sendo três funcionários responsáveis pelas atividades de cada estabelecimento.
+Nome e natureza da organização: Adega LB
+
+Contexto e porte: A Adega LB é uma organização com fins lucrativos que possui três estabelecimentos. Atualmente, a organização conta com 9 funcionários e 1 patrão, sendo três funcionários responsáveis pelas atividades de cada estabelecimento.
 
 O funcionamento da organização ocorre de forma local em cada unidade. Entretanto, a gestão é centralizada pelo proprietário, que realiza o direcionamento das atividades de forma remota. A comunicação entre o proprietário e os três estabelecimentos ocorre por meio de aplicativos de mensagens instantâneas, como o WhatsApp.
 
 Cada estabelecimento possui autonomia para organizar o atendimento e as atividades locais com seus respectivos funcionários, além de repassar à administração central as demandas do dia e informações relacionadas ao andamento das vendas. Dessa forma, existe uma divisão entre a operação local das unidades e o direcionamento centralizado realizado pelo proprietário.
 
-Problemas e necessidades identificados
-
-Durante a pesquisa de campo, foi identificada principalmente a falta de controle adequado do estoque e a ausência de um banco de dados para auxiliar na organização das informações da empresa.
+Problemas e necessidades identificados: Durante a pesquisa de campo, foi identificada principalmente a falta de controle adequado do estoque e a ausência de um banco de dados para auxiliar na organização das informações da empresa.
 
 Atualmente, parte da comunicação e do direcionamento das atividades entre a administração central e os estabelecimentos ocorre de forma remota por meio de aplicativos de mensagens instantâneas. Embora esse meio seja utilizado para a comunicação das demandas e do andamento das vendas, a organização não possui um banco de dados estruturado para centralizar e organizar suas informações.
 
 Diante disso, identifica-se a necessidade de uma solução que possibilite uma melhor organização das informações relacionadas às operações da Adega LB, principalmente no que diz respeito ao controle de estoque e à centralização dos dados.
 
-Justificativa da escolha
-
-A Adega LB foi escolhida para o desenvolvimento do projeto principalmente pela facilidade de acesso à organização, o que possibilita a realização da pesquisa de campo e a observação de seu funcionamento real.
+Justificativa da escolha: A Adega LB foi escolhida para o desenvolvimento do projeto principalmente pela facilidade de acesso à organização, o que possibilita a realização da pesquisa de campo e a observação de seu funcionamento real.
 
 Além disso, a organização apresenta planos futuros de expansão, tornando relevante a análise de sua estrutura atual e a proposição de uma modelagem de banco de dados que possa contribuir para uma melhor organização das informações. A existência de três estabelecimentos e de uma administração centralizada também torna a organização um caso adequado para estudar a necessidade de centralização e organização dos dados.
 
