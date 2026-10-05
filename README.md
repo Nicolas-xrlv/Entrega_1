@@ -278,8 +278,7 @@ O vínculo entre **Fornecedor e Produto** também pode ser identificado por meio
 
 ## 7. Diagrama Entidade-Relacionamento (DER)
 
-<img width="1835" height="1634" alt="Untitled" src="https://github.com/user-attachments/assets/2c0cbd8c-ed4a-4a46-917c-48c58a8705b0" />
-
+*Anexado no repositório*
 
 ## 8. Justificativa Técnica
 
