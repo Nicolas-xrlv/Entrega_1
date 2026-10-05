@@ -1,5 +1,5 @@
 # Entrega_1
-- Nicolas Souza Silva 48061875, Bruno Henrique, Guilherme Lucas Molina Ribeiro 48143413
+- Nicolas Souza Silva 48061875, Bruno Henrique Caballero Cayola 48134970, Guilherme Lucas Molina Ribeiro 48143413
 
 ## 1. Caracterização da Organização
 
@@ -141,15 +141,125 @@ Entidade: Compra
 
 ---
 
+
 ## 6. Modelagem Conceitual (Entidades, Atributos, Relacionamentos)
-*(vale 7,5% na dimensão conceitual)*
 
-- **Entidades reconhecidas:** *liste e justifique brevemente cada uma.*
-- **Atributos e classificações:** *quais atributos pertencem a cada entidade.*
-- **Relacionamentos pertinentes:** *como as entidades se conectam.*
-- **Restrições e políticas organizacionais aplicadas ao modelo.**
 
----
+- Entidades reconhecidas e justificativas
+
+
+EntidadeㅤㅤㅤㅤㅤㅤㅤㅤㅤJustificativa
+
+ClienteㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤRepresenta as pessoas ou empresas que realizam compras na distribuidora.
+
+ProdutoㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤRepresenta as bebidas e demais produtos comercializados pela distribuidora.
+
+FornecedorㅤㅤㅤㅤㅤㅤㅤㅤRepresenta as empresas responsáveis pelo fornecimento dos produtos.
+
+Funcionárioㅤㅤ­ㅤㅤㅤㅤ­­­­­­­­­Representa os funcionários responsáveis pelas atividades da distribuidora, incluindo o registro de vendas.
+
+VendaㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤRegistra as vendas realizadas pela distribuidora.
+
+CompraㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤRegistra as compras realizadas junto aos fornecedores.
+
+EstoqueㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤControla a quantidade disponível de cada produto na distribuidora.
+
+
+
+
+- Atributos e classificações
+
+
+
+Cliente:ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤid_cliente, nome, cpf_cnpj, tipo, telefone, email, endereco, status.
+
+Produto:ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤid_produto, nome_produto, descricao, id_categoria, preco_venda, ativo.
+
+Categoria:ㅤㅤㅤㅤㅤㅤㅤㅤㅤid_categoria, nome_categoria, descricao, status.
+
+Fornecedor:ㅤㅤㅤㅤㅤㅤㅤㅤid_fornecedor, nome_fornecedor, cnpj, telefone, email, endereco, status.
+
+Funcionário:ㅤㅤㅤㅤㅤㅤㅤㅤid_funcionario, nome, cpf, cargo, data_admissao, telefone, status.
+
+Venda:ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤid_venda, id_cliente, id_funcionario, data_venda, forma_pagamento, valor_total.
+
+Item_Venda:ㅤㅤㅤㅤㅤㅤㅤㅤid_item_venda, id_venda, id_produto, quantidade, preco_unitario, subtotal.
+
+Compra:ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤid_compra, id_fornecedor, data_compra, valor_total, forma_pagamento.
+
+Item_Compra:ㅤㅤㅤㅤㅤㅤㅤㅤid_item_compra, id_compra, id_produto, quantidade, preco_unitario, subtotal.
+
+Estoque:ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤid_estoque, id_produto, quantidade_atual, localizacao, data_atualizacao.
+
+
+
+
+
+- Relacionamentos pertinentes
+
+RelacionamentoㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤCardinalidade	ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤDescrição
+
+
+Categoria — Produtoㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ1ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤUma categoria pode possuir vários produtos, enquanto cada produto pertence a uma categoria.
+
+
+Cliente — Vendaㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ1ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤUm cliente pode realizar várias vendas, enquanto cada venda pertence a um cliente.
+
+
+Funcionário — Vendaㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ1ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤUm funcionário pode registrar várias vendas, enquanto cada venda é registrada por um funcionário.
+
+
+Venda — Item_Vendaㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ1ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤUma venda pode possuir vários itens, enquanto cada item pertence a uma venda.
+
+
+Produto — Item_Vendaㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ1ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤUm produto pode aparecer em vários itens de venda.
+
+
+Fornecedor — Compraㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ1ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤUm fornecedor pode estar relacionado a várias compras.
+
+
+Compra — Item_Compraㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ1ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤUma compra pode possuir vários itens.
+
+
+Produto — Item_Compraㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ1ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤUm produto pode aparecer em várias compras.
+
+
+Produto — Estoqueㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ1:1ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤCada produto possui um registro de estoque para controlar sua quantidade disponível.
+
+
+Fornecedor — ProdutoㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤNㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤUm fornecedor pode fornecer vários produtos e um produto pode ser fornecido por diferentes fornecedores.
+
+
+
+
+ - Restrições e políticas organizacionais
+
+ • Cada entidade possui um identificador único. 
+  
+ • Os identificadores das entidades são utilizados como chaves primárias. 
+  
+ • As chaves estrangeiras devem referenciar registros existentes.
+  
+ • Uma venda deve possuir pelo menos um item. Uma compra deve possuir pelo menos um item.
+  
+ • A quantidade dos produtos vendidos ou comprados deve ser maior que zero.
+  
+ • Preços e valores monetários não podem ser negativos.
+  
+ • Uma venda deve reduzir a quantidade disponível do produto no estoque.
+  
+ • Uma compra deve aumentar a quantidade disponível do produto no estoque.
+  
+ • Um produto deve estar vinculado a uma categoria.
+  
+ • Um produto pode ser fornecido por um ou mais fornecedores.
+  
+ • Clientes, fornecedores, funcionários, produtos e categorias podem possuir status para indicar se estão ativos ou inativos.
+  
+ • Dados pessoais e cadastrais devem ser armazenados somente quando necessários para as operações da distribuidora.
+  
+ • Os exemplos utilizados no projeto devem ser fictícios e não devem representar dados reais de clientes, funcionários ou fornecedores.
+  
 
 ## 7. Diagrama Entidade-Relacionamento (DER)
 *(vale 20% — é o item de maior peso da entrega)*
