@@ -162,7 +162,6 @@ Entidade: Compra
 ---
 
 ## 8. Justificativa Técnica
-## 8. Justificativa Técnica
 
 A modelagem conceitual foi desenvolvida a partir dos processos observados na Adega LB, considerando principalmente o cadastro de produtos, o controle de estoque, a compra de mercadorias, a realização de vendas e a atualização do estoque.
 
