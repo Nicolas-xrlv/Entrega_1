@@ -188,6 +188,22 @@ Entidade: Estoque
 | LOCALIZACAO      | Local onde o produto está armazenado                  | Deve identificar a localização utilizada para controle do estoque                              |
 | DATA_ATUALIZACAO | Data da última atualização das informações do estoque | Deve ser atualizada sempre que houver alteração na quantidade ou nas informações de estoque    |
 
+Informações levantadas a partir da pesquisa de campo:
+
+A análise da empresa teve como foco as atividades de compra, armazenamento e venda de bebidas, considerando tanto o atendimento aos clientes quanto o abastecimento do estoque. A partir da observação dessas atividades, foram identificadas as principais informações necessárias para representar o funcionamento da empresa no banco de dados.
+
+No processo de cadastro de produtos, é necessário registrar informações como nome do produto, descrição, categoria e preço de venda. A utilização de categorias permite organizar produtos com características semelhantes, como vinhos, cervejas, destilados e bebidas não alcoólicas, facilitando sua identificação e comercialização.
+
+No controle de estoque, é necessário acompanhar a quantidade disponível de cada produto e a data da última atualização. As entradas de produtos ocorrem principalmente por meio das compras realizadas com fornecedores, enquanto as saídas ocorrem durante as vendas realizadas aos clientes. Dessa forma, uma compra aumenta a quantidade disponível em estoque e uma venda reduz essa quantidade.
+
+No processo de compra, são registradas informações referentes ao fornecedor, à data da operação, à forma de pagamento e aos produtos adquiridos. Como uma mesma compra pode conter vários produtos, foi criada a entidade Item_Compra, responsável por registrar o produto, a quantidade adquirida, o preço unitário e o subtotal de cada item.
+
+No processo de venda, são registrados o cliente, o funcionário responsável pelo atendimento ou registro da operação, a data da venda, a forma de pagamento e os produtos comercializados. Como uma venda também pode conter vários produtos diferentes, foi criada a entidade Item_Venda, permitindo registrar individualmente a quantidade, o preço unitário e o subtotal de cada produto vendido.
+
+A separação entre Venda e Item_Venda e entre Compra e Item_Compra foi adotada para evitar que uma mesma operação precise armazenar vários produtos em um único registro. Dessa forma, o modelo consegue representar, por exemplo, uma venda contendo diferentes tipos de bebidas, cada uma com sua respectiva quantidade e preço.
+
+Também foi considerada a necessidade de manter o cadastro de clientes, fornecedores e funcionários, pois esses dados estão diretamente relacionados às operações da empresa. Clientes são associados às vendas, fornecedores às compras e funcionários às vendas realizadas ou registradas.
+
 
 ## 6. Modelagem Conceitual (Entidades, Atributos e Relacionamentos)
 
