@@ -1,5 +1,5 @@
 # Entrega_1
-- Nicolas Souza Silva 48061875, Bruno Henrique, Guilherme Lucas
+- Nicolas Souza Silva 48061875, Bruno Henrique, Guilherme Lucas Molina Ribeiro 48143413
 
 ## 1. Caracterização da Organização
 
@@ -20,6 +20,12 @@ Diante disso, identifica-se a necessidade de uma solução que possibilite uma m
 Justificativa da escolha: A Adega LB foi escolhida para o desenvolvimento do projeto principalmente pela facilidade de acesso à organização, o que possibilita a realização da pesquisa de campo e a observação de seu funcionamento real.
 
 Além disso, a organização apresenta planos futuros de expansão, tornando relevante a análise de sua estrutura atual e a proposição de uma modelagem de banco de dados que possa contribuir para uma melhor organização das informações. A existência de três estabelecimentos e de uma administração centralizada também torna a organização um caso adequado para estudar a necessidade de centralização e organização dos dados.
+
+Link endereço:https://maps.app.goo.gl/VWwuUbpVrpduc8Wv6
+
+Endereço: Av. Domingos de Mendonça, 204 - Jardim Maria Lidia, São Paulo - SP, 08370-420
+
+Forma de contato: Responsável pela organização
 
 ---
 
