@@ -3,11 +3,18 @@
 
 ## 1. Caracterização da Organização
 
-- **Nome e natureza da organização:** *qual organização real o grupo escolheu (com acesso garantido para pesquisa de campo) — pode ser uma empresa (livraria, lanchonete, pet shop), uma ONG, uma associação comunitária ou outra instituição.*
-- **Contexto e porte:** *com ou sem fins lucrativos; tamanho da operação; número de pessoas envolvidas (funcionários, voluntários, membros, fiéis); volume de atividades (vendas, atendimentos, doações, rituais, eventos).*
-- **Problemas e necessidades identificados:** *qual é a "crise operacional" — o que está desorganizado hoje (planilhas soltas, papel, falta de controle de estoque/doações/cadastros, etc.)?*
-- **Justificativa da escolha:** *por que essa organização foi escolhida e por que ela é um bom caso para o projeto?*
-- **Evidências da organização:** *comprove que a organização existe e que o grupo teve acesso a ela — ex.: fotos do local/da visita, link da organização no Google (Google Maps/Google Meu Negócio, site, rede social), endereço completo e forma de contato (telefone, e-mail, responsável pela organização).*
+- Contexto e porte
+A Adega LB é uma organização com fins lucrativos que possui três estabelecimentos. Atualmente, a organização conta com 9 funcionários e 1 patrão, sendo três funcionários responsáveis pelas atividades de cada estabelecimento.
+O funcionamento da organização ocorre de forma local em cada unidade. Entretanto, a gestão é centralizada pelo proprietário, que realiza o direcionamento das atividades de forma remota. A comunicação entre o proprietário e os três estabelecimentos ocorre por meio de aplicativos de mensagens instantâneas, como o WhatsApp.
+Cada estabelecimento possui autonomia para organizar o atendimento e as atividades locais com seus respectivos funcionários, além de repassar à administração central as demandas do dia e informações relacionadas ao andamento das vendas. Dessa forma, existe uma divisão entre a operação local das unidades e o direcionamento centralizado realizado pelo proprietário.
+Problemas e necessidades identificados
+Durante a pesquisa de campo, foi identificada principalmente a falta de controle adequado do estoque e a ausência de um banco de dados para auxiliar na organização das informações da empresa.
+Atualmente, parte da comunicação e do direcionamento das atividades entre a administração central e os estabelecimentos ocorre de forma remota por meio de aplicativos de mensagens instantâneas. Embora esse meio seja utilizado para a comunicação das demandas e do andamento das vendas, a organização não possui um banco de dados estruturado para centralizar e organizar suas informações.
+Diante disso, identifica-se a necessidade de uma solução que possibilite uma melhor organização das informações relacionadas às operações da Adega LB, principalmente no que diz respeito ao controle de estoque e à centralização dos dados.
+Justificativa da escolha
+A Adega LB foi escolhida para o desenvolvimento do projeto principalmente pela facilidade de acesso à organização, o que possibilita a realização da pesquisa de campo e a observação de seu funcionamento real.
+Além disso, a organização apresenta planos futuros de expansão, tornando relevante a análise de sua estrutura atual e a proposição de uma modelagem de banco de dados que possa contribuir para uma melhor organização das informações. A existência de três estabelecimentos e de uma administração centralizada também torna a organização um caso adequado para estudar a necessidade de centralização e organização dos dados.
+
 
 ---
 
@@ -49,11 +56,20 @@ Usabilidade, desempenho, disponibilidade, integridade e segurança
 
 ---
 
-## 4. Regras de Negócio
-*(esta seção DIVIDE com a Seção 3 "Requisitos do Sistema" os mesmos 7,5% da dimensão conceitual — juntas valem 7,5%, não 7,5% cada — + 4% exclusivos desta seção na documentação. "Regras de negócio" é o termo técnico usado em modelagem de dados para as regras de funcionamento de qualquer organização, com ou sem fins lucrativos)*
+## 4.Regras de Negócio
 
-- **Regras operacionais:** *condições que a organização impõe (ex.: "um pedido só pode ser fechado se houver estoque disponível", "uma doação só pode ser registrada com identificação do doador", "um ritual só pode ser agendado se o espaço estiver disponível").*
-- **Restrições organizacionais:** *limitações que afetam o modelo (ex.: políticas internas, prazos, exigências legais, normas religiosas ou estatutárias) — e por que elas importam.*
+Regras operacionais
+Cada estabelecimento realiza suas atividades de forma autônoma, com seus respectivos funcionários.
+As demandas e o andamento das vendas de cada estabelecimento são repassados à administração centralizada.
+O proprietário realiza o direcionamento das atividades dos três estabelecimentos de forma remota, utilizando aplicativos de mensagens instantâneas.
+O controle de estoque é uma necessidade identificada na organização, porém as regras específicas utilizadas atualmente para entrada, saída e reposição de produtos precisam ser confirmadas com a organização.
+Restrições organizacionais
+A administração é centralizada no proprietário: o proprietário realiza o direcionamento remoto das atividades dos três estabelecimentos. Isso importa para o modelo de dados porque pode ser necessário representar a relação entre a administração central e cada estabelecimento.
+Cada estabelecimento possui operação local própria: os estabelecimentos possuem autonomia para organizar o atendimento e as atividades locais com seus respectivos funcionários. Isso importa para o modelo de dados porque as informações das operações podem precisar ser associadas ao estabelecimento em que ocorreram.
+A comunicação entre os estabelecimentos e a administração ocorre remotamente por aplicativos de mensagens instantâneas: essa é a forma atualmente utilizada para o direcionamento e o repasse das demandas. Isso importa para o modelo de dados porque evidencia a necessidade de avaliar quais informações atualmente comunicadas de forma descentralizada deverão ser estruturadas e centralizadas no sistema.
+A organização não possui atualmente um banco de dados estruturado: essa condição foi identificada durante a pesquisa de campo. Isso importa para o modelo porque o sistema deverá organizar as informações que atualmente não estão centralizadas em uma estrutura de dados.
+Observação: regras específicas sobre prazos, limites de estoque, formas de cadastro, condições de venda, reposição de produtos ou outras políticas internas ainda precisam ser confirmadas com a organização.
+
 
 ---
 
@@ -139,11 +155,23 @@ Entidade: Compra
 ---
 
 ## 8. Justificativa Técnica
-*(vale 7,5% — sozinho, é o subcritério de maior peso dentro da Dimensão Conceitual)*
+## 8. Justificativa Técnica
 
-*Explique e defenda as decisões de abstração e modelagem tomadas: por que essas entidades, esses atributos, esses relacionamentos e essas cardinalidades — e não outras alternativas possíveis?*
+A modelagem conceitual foi desenvolvida a partir dos processos observados na Adega LB, considerando principalmente o cadastro de produtos, o controle de estoque, a compra de mercadorias, a realização de vendas e a atualização do estoque.
 
----
+A entidade **Produto** foi definida por representar os produtos comercializados pela organização. A entidade **Estabelecimento** foi considerada necessária para diferenciar as três unidades da Adega LB e permitir associar as operações ao local em que são realizadas.
+
+A entidade **Estoque** foi incluída devido à necessidade identificada de melhorar o controle das quantidades disponíveis de produtos. Essa estrutura permite representar o acompanhamento das movimentações de entrada e saída de mercadorias.
+
+As entidades **Compra** e **Fornecedor** foram utilizadas para representar o processo de aquisição de mercadorias para reposição do estoque. A inclusão de **Item_Compra** permite representar os diferentes produtos que podem fazer parte de uma mesma compra.
+
+Da mesma forma, a entidade **Venda** representa as operações realizadas pelos estabelecimentos, enquanto **Item_Venda** permite representar os produtos pertencentes a cada venda. Essa separação evita associar uma única venda diretamente a apenas um produto e permite representar vendas que contenham diferentes produtos.
+
+A entidade **Cliente** deverá ser mantida no modelo caso o cadastro de clientes seja confirmado como parte efetiva das operações da Adega LB.
+
+Os relacionamentos foram definidos de acordo com os processos levantados, buscando representar a relação entre estabelecimentos, produtos, estoque, compras, fornecedores e vendas. As cardinalidades do DER deverão refletir as regras observadas na organização e deverão ser confirmadas quando houver informações ainda não levantadas.
+
+A modelagem também considera a necessidade de centralização das informações, uma vez que a Adega LB possui três estabelecimentos e uma administração centralizada. Dessa forma, a estrutura proposta busca organizar os dados das diferentes unidades em um modelo único, mantendo a identificação do estabelecimento responsável por cada operação.
 
 ## 9. Uso de Inteligência Artificial
 
